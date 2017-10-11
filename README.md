@@ -1,1 +1,1 @@
-# Daniel Racine - Pixel Mosaic
+# Pixel Mosaic

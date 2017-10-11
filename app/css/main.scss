@@ -11,12 +11,14 @@
 //    Layout
 // ------------------------------------------
 @import "layout/grid";
+@import "layout/global";
 
 // ------------------------------------------
 //    Modules
 // ------------------------------------------
 @import "modules/header";
 @import "modules/footer";
+@import "modules/cubes";
 
 // ------------------------------------------
 //    Themes

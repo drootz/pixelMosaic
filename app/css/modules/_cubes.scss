@@ -1,0 +1,198 @@
+.cube {
+    // outline: 1px solid green;
+    // margin: $cubeDefault-spacing / 2;
+    margin: $cubeDefault-spacing;
+    float: left;
+}
+
+.layer {
+    // outline: 1px solid blue;
+    @include clearfix();
+    padding: 0;
+    margin: 0 auto;
+}
+
+.cubie {
+    // outline: 1px solid red;
+    position: relative;
+    float: left;
+    overflow: hidden;
+
+    // default color
+    background-color: #fff;
+
+    // default border-radius
+    border-radius: 3px;
+}
+
+
+
+
+$s3x-cubie-spacing: $cubeDefault-spacing;
+$s3x-cubie-size: 30px;
+$s3x-cube-size: ($s3x-cubie-size * 3) + ($s3x-cubie-spacing * 2);
+
+.s3x {
+    width: $s3x-cube-size;
+    height: $s3x-cube-size;
+
+    .layer.middle {
+        margin: $s3x-cubie-spacing 0;
+    }
+
+    .cubie {
+        width: $s3x-cubie-size;
+        height: $s3x-cubie-size;
+
+        &.center {
+            margin: 0 $s3x-cubie-spacing;
+        }
+    }
+}
+
+
+
+
+.brand-gan {
+    .pos-edge {
+        border-bottom-left-radius: 50% 25%;
+        border-bottom-right-radius: 50% 25%;
+    }
+    .pos-center {
+        border-radius: 50%;
+    }
+    .layer {
+        &.middle {
+            .left { transform: rotate(-90deg); }
+            .right { transform: rotate(90deg); }
+        }
+        &.bottom {
+            .center { transform: rotate(180deg); }
+        }
+    }
+}
+
+.brand-valk {
+    .pos-edge {
+        border-bottom-left-radius: 50% 25%;
+        border-bottom-right-radius: 50% 25%;
+    }
+    .pos-center {
+        border-radius: 8px;
+    }
+    .pos-corner {
+        border-top-left-radius: 6px;
+    }
+    .layer {
+        &.up {
+            .right { transform: rotate(90deg); }
+        }
+        &.middle {
+            .left { transform: rotate(-90deg); }
+            .right { transform: rotate(90deg); }
+        }
+        &.bottom {
+            .left { transform: rotate(-90deg); }
+            .center { transform: rotate(180deg); }
+            .right { transform: rotate(180deg); }
+        }
+    }
+}
+
+.brand-gts2 {
+    .pos-edge {
+        border-bottom-left-radius: 50% 22.5%;
+        border-bottom-right-radius: 50% 22.5%;
+    }
+    .pos-center {
+        border-radius: 8px;
+    }
+    .layer {
+        &.middle {
+            .left { transform: rotate(-90deg); }
+            .right { transform: rotate(90deg); }
+        }
+        &.bottom {
+            .center { transform: rotate(180deg); }
+        }
+    }
+}
+
+.brand-YueXiaoPro {
+    .pos-edge {
+        border-bottom-left-radius: 50% 35%;
+        border-bottom-right-radius: 50% 35%;
+    }
+    .pos-center {
+        border-radius: 8px;
+    }
+    .pos-corner {
+        border-bottom-right-radius: 10px;
+    }
+    .layer {
+        &.up {
+            .right { transform: rotate(90deg); }
+        }
+        &.middle {
+            .left { transform: rotate(-90deg); }
+            .right { transform: rotate(90deg); }
+        }
+        &.bottom {
+            .left { transform: rotate(-90deg); }
+            .center { transform: rotate(180deg); }
+            .right { transform: rotate(180deg); }
+        }
+    }
+}
+
+
+
+
+.brand-gan {
+    .white {    background-color: white;   }
+    .blue {     background-color: blue;   }
+    .red {      background-color: red;   }
+    .green {    background-color: green;   }
+    .orange {   background-color: orange;   }
+    .yellow {   background-color: yellow;   }
+}
+
+.brand-valk {
+    .white {    background-color: white;   }
+    .blue {     background-color: blue;   }
+    .red {      background-color: red;   }
+    .green {    background-color: green;   }
+    .orange {   background-color: orange;   }
+    .yellow {   background-color: yellow;   }
+}
+
+.brand-rubik {
+    .white {    background-color: white;   }
+    .blue {     background-color: blue;   }
+    .red {      background-color: red;   }
+    .green {    background-color: green;   }
+    .orange {   background-color: orange;   }
+    .yellow {   background-color: yellow;   }
+}
+
+.brand-gts2 {
+    .white {    background-color: white;   }
+    .blue {     background-color: blue;   }
+    .red {      background-color: red;   }
+    .green {    background-color: green;   }
+    .orange {   background-color: orange;   }
+    .yellow {   background-color: yellow;   }
+}
+
+.brand-YueXiaoPro {
+    .white {    background-color: white;   }
+    .blue {     background-color: blue;   }
+    .red {      background-color: red;   }
+    .green {    background-color: green;   }
+    .orange {   background-color: orange;   }
+    .yellow {   background-color: yellow;   }
+}
+
+.rotate90 { transform: rotate(90deg);   }
+.rotate180 { transform: rotate(180deg);   }
+.rotate270 { transform: rotate(270deg);   }
