@@ -1,0 +1,41 @@
+{
+  "name": "pixelMosaic",
+  "version": "1.0.0",
+  "description": "Pixel Mosaic",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/drootz/pixelMosaic.git"
+  },
+  "keywords": [
+    "pixelMosaic",
+    "mosaic"
+  ],
+  "author": "Daniel Racine",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/drootz/pixelMosaic/issues",
+    "email": "mailto.danielracine@gmail.com"
+  },
+  "homepage": "https://github.com/drootz/pixelMosaic#readme",
+  "devDependencies": {
+    "critical": "^0.8.4",
+    "grunt": "^1.0.1",
+    "grunt-critical": "^0.2.2",
+    "gulp": "^3.9.1",
+    "gulp-connect": "^5.0.0",
+    "gulp-htmlmin": "^3.0.0",
+    "gulp-if": "^2.0.2",
+    "gulp-rename": "^1.2.2",
+    "gulp-sitemap": "^4.2.0",
+    "gulp-uncss": "^1.0.6",
+    "gulp-util": "^3.0.8",
+    "psi-ngrok": "^0.1.2",
+    "run-sequence": "^1.2.2",
+    "sprity": "^1.0.8",
+    "sprity-sass": "^1.0.4",
+    "vinyl-ftp": "^0.6.0"
+  }
+}

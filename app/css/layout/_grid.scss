@@ -1,0 +1,60 @@
+/* Border Box all things
+--------------------------------------*/
+html *, html *:after, html *:before {
+  box-sizing: border-box;
+}
+
+.row {
+    //@include rem("max-width", $maxWidth);
+    @include clearfix();
+    padding: 0;
+    margin: 0 auto;
+    max-width: $wrapperWidth;
+    @include breakpoint (mobileonly) {
+        padding: 0 5px;
+    }
+}
+
+
+[class*='col-'] {
+    float: left;
+    position: relative;
+    overflow: hidden;
+}
+
+.col-1  { width: 8.333333333%;  }
+.col-2  { width: 16.66666667%;  }
+.col-3  { width: 25%;           }
+.col-4  { width: 33.33333333%;  }
+.col-5  { width: 41.66666666%;  }
+.col-6  { width: 50%;           }
+.col-7  { width: 58.33333333%;  }
+.col-8  { width: 66.66666666%;  }
+.col-9  { width: 75%;           }
+.col-10 { width: 83.333333333%; }
+.col-11 { width: 91.66666666%;  }
+.col-12 { width: 100%;          }
+
+
+[class*='col-padded-'] {
+    margin-left: 1.6%;
+
+    &:first-child {
+        margin-left:0;
+    }
+}
+
+.col-padded-1  { width: 6.86666666667%; }
+.col-padded-2  { width: 15.3333333333%; }
+.col-padded-3  { width: 23.8%;          }
+.col-padded-4  { width: 32.2666666667%; }
+.col-padded-5  { width: 40.7333333333%; }
+.col-padded-6  { width: 49.2%;          }
+.col-padded-7  { width: 57.6666666667%; }
+.col-padded-8  { width: 66.1333333333%; }
+.col-padded-9  { width: 74.6%;          }
+.col-padded-10 { width: 83.0666666667%; }
+.col-padded-11 { width: 91.5333333333%; }
+.col-padded-12 { width: 100%;
+    margin-left: 0;
+}
