@@ -1,28 +1,33 @@
 .cube {
-    // outline: 1px solid green;
-    // margin: $cubeDefault-spacing / 2;
-    margin: $cubeDefault-spacing;
+    // margin: ($cubeDefault-spacing / 2)+1;
+    // margin: $cubeDefault-spacing;
+    margin: (($cubeDefault-spacing / 2)+1);
     float: left;
+
+    .c-up {    background-color: white;   }
+    .c-front {     background-color: blue;   }
+    .c-right {      background-color: red;   }
+    .c-back {    background-color: green;   }
+    .c-left {   background-color: orange;   }
+    .c-bottom {   background-color: yellow;   }
 }
 
 .layer {
-    // outline: 1px solid blue;
     @include clearfix();
     padding: 0;
     margin: 0 auto;
 }
 
 .cubie {
-    // outline: 1px solid red;
     position: relative;
     float: left;
-    overflow: hidden;
 
     // default color
     background-color: #fff;
 
     // default border-radius
-    border-radius: 3px;
+    border-radius: 2px;
+
 }
 
 
@@ -41,156 +46,610 @@ $s3x-cube-size: ($s3x-cubie-size * 3) + ($s3x-cubie-spacing * 2);
     }
 
     .cubie {
+        position: relative;
         width: $s3x-cubie-size;
         height: $s3x-cubie-size;
 
         &.center {
             margin: 0 $s3x-cubie-spacing;
         }
+
     }
+}
+
+.cubie-shadow {
+    content: '';
+    display: block;
+    position: absolute;
+    width: $s3x-cubie-size + 4px;
+    height: $s3x-cubie-size + 4px;
+    top: -2px; left: -2px;
+    border-radius: 1px;
+    box-shadow: 1px -1px 1px 0px rgba(255,255,255,0.2),
+                inset -1px 1px 2px 0px rgba(255,255,255,0.3);
+}
+
+.cubie-shadow-thevalk {
+    @extend .cubie-shadow;
+    width: $s3x-cubie-size + 2px;
+    height: $s3x-cubie-size + 2px;
+    top: -1px; left: -1px;
+    border-radius: 1px;
 }
 
 
 
+// .brand-gan {
+//     .pos-edge {
+//         border-bottom-left-radius: 50% 25%;
+//         border-bottom-right-radius: 50% 25%;
+//     }
+//     .pos-center {
+//         border-radius: 50%;
+//     }
+//     .layer {
+//         &.middle {
+//             .left { transform: rotate(-90deg); }
+//             .right { transform: rotate(90deg); }
+//         }
+//         &.bottom {
+//             .center { transform: rotate(180deg); }
+//         }
+//     }
+//     .pos-center.c-up {
+//         background-color: white;
+//         background-image: url(../img/logo-gan.png);
+//         background-position: center center;
+//         background-size: cover;
+//     }
+// }
 
 .brand-gan {
-    .pos-edge {
-        border-bottom-left-radius: 50% 25%;
-        border-bottom-right-radius: 50% 25%;
-    }
     .pos-center {
         border-radius: 50%;
-    }
-    .layer {
-        &.middle {
-            .left { transform: rotate(-90deg); }
-            .right { transform: rotate(90deg); }
-        }
-        &.bottom {
-            .center { transform: rotate(180deg); }
-        }
-    }
-}
 
-.brand-valk {
-    .pos-edge {
-        border-bottom-left-radius: 50% 25%;
-        border-bottom-right-radius: 50% 25%;
-    }
-    .pos-center {
-        border-radius: 8px;
+        &::before {
+            border-radius: 50%;
+            @extend .cubie-shadow;
+            width: $s3x-cubie-size + 4px;
+            height: $s3x-cubie-size + 4px;
+            top: -2px; left: -2px;
+
+            box-shadow: 1px -1px 2px 0px rgba(255,255,255,0.2),
+                        inset -1px 1px 4px 0px rgba(255,255,255,0.3);
+        }
+        &.rotate90 {
+            &::before {
+            box-shadow: -1px -1px 2px 0px rgba(255,255,255,0.2),
+                        inset 1px 1px 4px 0px rgba(255,255,255,0.3);
+            }
+        }
+        &.rotate180 {
+            &::before {
+            box-shadow: -1px 1px 2px 0px rgba(255,255,255,0.2),
+                        inset 1px -1px 4px 0px rgba(255,255,255,0.3);
+            }
+        }
+        &.rotate270 {
+            &::before {
+            box-shadow: 1px 1px 2px 0px rgba(255,255,255,0.2),
+                        inset -1px -1px 4px 0px rgba(255,255,255,0.3);
+            }
+        }
     }
     .pos-corner {
-        border-top-left-radius: 6px;
+        &::before {
+            @extend .cubie-shadow;
+        }
     }
     .layer {
         &.up {
-            .right { transform: rotate(90deg); }
+            .center {
+                border-bottom-left-radius: 50% 25%;
+                border-bottom-right-radius: 50% 25%;
+
+                &::before {
+                    border-bottom-left-radius: 50% 25%;
+                    border-bottom-right-radius: 50% 25%;
+                    @extend .cubie-shadow;
+                }
+            }
         }
         &.middle {
-            .left { transform: rotate(-90deg); }
-            .right { transform: rotate(90deg); }
+            .left {
+                border-top-right-radius: 25% 50%;
+                border-bottom-right-radius: 25% 50%;
+                &::before {
+                    border-top-right-radius: 25% 50%;
+                    border-bottom-right-radius: 25% 50%;
+                    @extend .cubie-shadow;
+                }
+            }
+            .right {
+                border-top-left-radius: 25% 50%;
+                border-bottom-left-radius: 25% 50%;
+                &::before {
+                    border-top-left-radius: 25% 50%;
+                    border-bottom-left-radius: 25% 50%;
+                    @extend .cubie-shadow;
+                }
+            }
         }
         &.bottom {
-            .left { transform: rotate(-90deg); }
-            .center { transform: rotate(180deg); }
-            .right { transform: rotate(180deg); }
+            .center {
+                border-top-left-radius: 50% 25%;
+                border-top-right-radius: 50% 25%;
+                &::before {
+                    border-top-left-radius: 50% 25%;
+                    border-top-right-radius: 50% 25%;
+                    @extend .cubie-shadow;
+                }
+            }
         }
     }
-}
-
-.brand-gts2 {
-    .pos-edge {
-        border-bottom-left-radius: 50% 22.5%;
-        border-bottom-right-radius: 50% 22.5%;
-    }
-    .pos-center {
-        border-radius: 8px;
-    }
-    .layer {
-        &.middle {
-            .left { transform: rotate(-90deg); }
-            .right { transform: rotate(90deg); }
-        }
-        &.bottom {
-            .center { transform: rotate(180deg); }
-        }
-    }
-}
-
-.brand-YueXiaoPro {
-    .pos-edge {
-        border-bottom-left-radius: 50% 35%;
-        border-bottom-right-radius: 50% 35%;
-    }
-    .pos-center {
-        border-radius: 8px;
-    }
-    .pos-corner {
-        border-bottom-right-radius: 10px;
-    }
-    .layer {
-        &.up {
-            .right { transform: rotate(90deg); }
-        }
-        &.middle {
-            .left { transform: rotate(-90deg); }
-            .right { transform: rotate(90deg); }
-        }
-        &.bottom {
-            .left { transform: rotate(-90deg); }
-            .center { transform: rotate(180deg); }
-            .right { transform: rotate(180deg); }
-        }
+    .pos-center.c-up {
+        background-color: white;
+        background-image: url(../img/logo-gan.png);
+        background-position: center center;
+        background-size: cover;
     }
 }
 
 
 
 
-.brand-gan {
-    .white {    background-color: white;   }
-    .blue {     background-color: blue;   }
-    .red {      background-color: red;   }
-    .green {    background-color: green;   }
-    .orange {   background-color: orange;   }
-    .yellow {   background-color: yellow;   }
-}
-
-.brand-valk {
-    .white {    background-color: white;   }
-    .blue {     background-color: blue;   }
-    .red {      background-color: red;   }
-    .green {    background-color: green;   }
-    .orange {   background-color: orange;   }
-    .yellow {   background-color: yellow;   }
-}
+// .brand-rubik {
+//     .pos-center.c-up {
+//         background-color: white;
+//         background-image: url(../img/logo-rubik.png);
+//         background-position: center center;
+//         background-size: cover;
+//     }
+// }
 
 .brand-rubik {
-    .white {    background-color: white;   }
-    .blue {     background-color: blue;   }
-    .red {      background-color: red;   }
-    .green {    background-color: green;   }
-    .orange {   background-color: orange;   }
-    .yellow {   background-color: yellow;   }
+    .pos-corner, .pos-edge {
+        &::before {
+            @extend .cubie-shadow;
+        }
+    }
+    .pos-center {
+        &::before {
+            @extend .cubie-shadow;
+        }
+        &.c-up {
+            background-color: white;
+            background-image: url(../img/logo-rubik.png);
+            background-position: center center;
+            background-size: cover;
+        }
+
+        &.rotate90 {
+            &::before {
+            box-shadow: -1px -1px 1px 0px rgba(255,255,255,0.2),
+                        inset 1px 1px 2px 0px rgba(255,255,255,0.3);
+            }
+        }
+        &.rotate180 {
+            &::before {
+            box-shadow: -1px 1px 1px 0px rgba(255,255,255,0.2),
+                        inset 1px -1px 2px 0px rgba(255,255,255,0.3);
+            }
+        }
+        &.rotate270 {
+            &::before {
+            box-shadow: 1px 1px 1px 0px rgba(255,255,255,0.2),
+                        inset -1px -1px 2px 0px rgba(255,255,255,0.3);
+            }
+        }
+    }
 }
 
-.brand-gts2 {
-    .white {    background-color: white;   }
-    .blue {     background-color: blue;   }
-    .red {      background-color: red;   }
-    .green {    background-color: green;   }
-    .orange {   background-color: orange;   }
-    .yellow {   background-color: yellow;   }
+
+
+
+// .brand-thevalk {
+//     .pos-edge {
+//         border-bottom-left-radius: 50% 25%;
+//         border-bottom-right-radius: 50% 25%;
+//     }
+//     .pos-center {
+//         border-radius: 8px;
+//     }
+//     .pos-corner {
+//         border-top-left-radius: 6px;
+//     }
+//     .layer {
+//         &.up {
+//             .right { transform: rotate(90deg); }
+//         }
+//         &.middle {
+//             .left { transform: rotate(-90deg); }
+//             .right { transform: rotate(90deg); }
+//         }
+//         &.bottom {
+//             .left { transform: rotate(-90deg); }
+//             .center { transform: rotate(180deg); }
+//             .right { transform: rotate(180deg); }
+//         }
+//     }
+//     .pos-center.c-up {
+//         background-color: white;
+//         background-image: url(../img/logo-thevalk.png);
+//         background-position: center center;
+//         background-size: cover;
+//     }
+// }
+
+.brand-thevalk {
+    .cubie {
+        border-radius: 1px;
+    }
+    .pos-center {
+        border-radius: 8px;
+
+        &::before {
+            @extend .cubie-shadow-thevalk;
+            border-radius: 8px;
+        }
+
+        &.rotate90 {
+            &::before {
+            box-shadow: -1px -1px 1px 0px rgba(255,255,255,0.2),
+                        inset 1px 1px 2px 0px rgba(255,255,255,0.3);
+            }
+        }
+        &.rotate180 {
+            &::before {
+            box-shadow: -1px 1px 1px 0px rgba(255,255,255,0.2),
+                        inset 1px -1px 2px 0px rgba(255,255,255,0.3);
+            }
+        }
+        &.rotate270 {
+            &::before {
+            box-shadow: 1px 1px 1px 0px rgba(255,255,255,0.2),
+                        inset -1px -1px 2px 0px rgba(255,255,255,0.3);
+            }
+        }
+    }
+    .layer {
+        &.up {
+            .left {
+                &::before {
+                    @extend .cubie-shadow-thevalk;
+                    border-radius: 1px;
+                }
+            }
+            .right {
+                &::before {
+                    @extend .cubie-shadow-thevalk;
+                    border-radius: 1px;
+                }
+            }
+            .center {
+                border-bottom-left-radius: 50% 25%;
+                border-bottom-right-radius: 50% 25%;
+
+                &::before {
+                    @extend .cubie-shadow-thevalk;
+                    border-radius: 1px;
+                    border-bottom-left-radius: 50% 25%;
+                    border-bottom-right-radius: 50% 25%;
+                }
+            }
+        }
+        &.middle {
+            .left {
+                border-top-right-radius: 25% 50%;
+                border-bottom-right-radius: 25% 50%;
+                &::before {
+                    @extend .cubie-shadow-thevalk;
+                    border-radius: 1px;
+                    border-top-right-radius: 25% 50%;
+                    border-bottom-right-radius: 25% 50%;
+                }
+            }
+            .right {
+                border-top-left-radius: 25% 50%;
+                border-bottom-left-radius: 25% 50%;
+                &::before {
+                    @extend .cubie-shadow-thevalk;
+                    border-radius: 1px;
+                    border-top-left-radius: 25% 50%;
+                    border-bottom-left-radius: 25% 50%;
+                }
+            }
+        }
+        &.bottom {
+            .left {
+                &::before {
+                    @extend .cubie-shadow-thevalk;
+                    border-radius: 1px;
+                }
+            }
+            .right {
+                &::before {
+                    @extend .cubie-shadow-thevalk;
+                    border-radius: 1px;
+                }
+            }
+            .center {
+                border-top-left-radius: 50% 25%;
+                border-top-right-radius: 50% 25%;
+                &::before {
+                    @extend .cubie-shadow-thevalk;
+                    border-radius: 1px;
+                    border-top-left-radius: 50% 25%;
+                    border-top-right-radius: 50% 25%;
+                }
+            }
+        }
+    }
+    .pos-center.c-up {
+        background-color: white;
+        background-image: url(../img/logo-thevalk.png);
+        background-position: center center;
+        background-size: cover;
+    }
 }
 
-.brand-YueXiaoPro {
-    .white {    background-color: white;   }
-    .blue {     background-color: blue;   }
-    .red {      background-color: red;   }
-    .green {    background-color: green;   }
-    .orange {   background-color: orange;   }
-    .yellow {   background-color: yellow;   }
+
+
+
+// .brand-weilonggts2 {
+//     .pos-edge {
+//         border-bottom-left-radius: 50% 22.5%;
+//         border-bottom-right-radius: 50% 22.5%;
+//     }
+//     .pos-center {
+//         border-radius: 8px;
+//     }
+//     .layer {
+//         &.middle {
+//             .left { transform: rotate(-90deg); }
+//             .right { transform: rotate(90deg); }
+//         }
+//         &.bottom {
+//             .center { transform: rotate(180deg); }
+//         }
+//     }
+//     .pos-center.c-up {
+//         background-color: white;
+//         background-image: url(../img/logo-moyu2.png);
+//         background-position: center center;
+//         background-size: cover;
+//     }
+// }
+
+.brand-weilonggts2 {
+    .pos-corner {
+        &::before {
+            @extend .cubie-shadow;
+        }
+    }
+    .pos-center {
+        border-radius: 8px;
+
+        &::before {
+            border-radius: 8px;
+            @extend .cubie-shadow;
+        }
+
+        &.rotate90 {
+            &::before {
+            box-shadow: -1px -1px 1px 0px rgba(255,255,255,0.2),
+                        inset 1px 1px 2px 0px rgba(255,255,255,0.3);
+            }
+        }
+        &.rotate180 {
+            &::before {
+            box-shadow: -1px 1px 1px 0px rgba(255,255,255,0.2),
+                        inset 1px -1px 2px 0px rgba(255,255,255,0.3);
+            }
+        }
+        &.rotate270 {
+            &::before {
+            box-shadow: 1px 1px 1px 0px rgba(255,255,255,0.2),
+                        inset -1px -1px 2px 0px rgba(255,255,255,0.3);
+            }
+        }
+    }
+    .layer {
+        &.up {
+            .center {
+                border-bottom-left-radius: 50% 22.5%;
+                border-bottom-right-radius: 50% 22.5%;
+
+                &::before {
+                    border-bottom-left-radius: 50% 22.5%;
+                    border-bottom-right-radius: 50% 22.5%;
+                    @extend .cubie-shadow;
+                }
+            }
+        }
+        &.middle {
+            .left {
+                border-top-right-radius: 22.5% 50%;
+                border-bottom-right-radius: 22.5% 50%;
+                &::before {
+                    border-top-right-radius: 22.5% 50%;
+                    border-bottom-right-radius: 22.5% 50%;
+                    @extend .cubie-shadow;
+                }
+            }
+            .right {
+                border-top-left-radius: 22.5% 50%;
+                border-bottom-left-radius: 22.5% 50%;
+                &::before {
+                    border-top-left-radius: 22.5% 50%;
+                    border-bottom-left-radius: 22.5% 50%;
+                    @extend .cubie-shadow;
+                }
+            }
+        }
+        &.bottom {
+            .center {
+                border-top-left-radius: 50% 22.5%;
+                border-top-right-radius: 50% 22.5%;
+                &::before {
+                    border-top-left-radius: 50% 22.5%;
+                    border-top-right-radius: 50% 22.5%;
+                    @extend .cubie-shadow;
+                }
+            }
+        }
+    }
+    .pos-center.c-up {
+        background-color: white;
+        background-image: url(../img/logo-moyu2.png);
+        background-position: center center;
+        background-size: cover;
+    }
+}
+
+
+
+
+// .brand-yuexiaopro {
+//     .pos-edge {
+//         border-bottom-left-radius: 50% 35%;
+//         border-bottom-right-radius: 50% 35%;
+//     }
+//     .pos-center {
+//         border-radius: 8px;
+//     }
+//     .pos-corner {
+//         border-bottom-right-radius: 10px;
+//     }
+//     .layer {
+//         &.up {
+//             .right { transform: rotate(90deg); }
+//         }
+//         &.middle {
+//             .left { transform: rotate(-90deg); }
+//             .right { transform: rotate(90deg); }
+//         }
+//         &.bottom {
+//             .left { transform: rotate(-90deg); }
+//             .center { transform: rotate(180deg); }
+//             .right { transform: rotate(180deg); }
+//         }
+//     }
+//     .pos-center.c-up {
+//         background-color: white;
+//         background-image: url(../img/logo-guoguan.png);
+//         background-position: center center;
+//         background-size: cover;
+//     }
+// }
+
+.brand-yuexiaopro {
+    .pos-center {
+        border-radius: 8px;
+
+        &::before {
+            border-radius: 8px;
+            @extend .cubie-shadow;
+        }
+
+        &.rotate90 {
+            &::before {
+            box-shadow: -1px -1px 1px 0px rgba(255,255,255,0.2),
+                        inset 1px 1px 2px 0px rgba(255,255,255,0.3);
+            }
+        }
+        &.rotate180 {
+            &::before {
+            box-shadow: -1px 1px 1px 0px rgba(255,255,255,0.2),
+                        inset 1px -1px 2px 0px rgba(255,255,255,0.3);
+            }
+        }
+        &.rotate270 {
+            &::before {
+            box-shadow: 1px 1px 1px 0px rgba(255,255,255,0.2),
+                        inset -1px -1px 2px 0px rgba(255,255,255,0.3);
+            }
+        }
+    }
+    .layer {
+        &.up {
+            .left {
+                border-bottom-right-radius: 10px;
+                &::before {
+                    border-bottom-right-radius: 10px;
+                    @extend .cubie-shadow;
+                }
+            }
+            .right {
+                border-bottom-left-radius: 10px;
+                &::before {
+                    border-bottom-left-radius: 10px;
+                    @extend .cubie-shadow;
+                }
+            }
+            .center {
+                border-bottom-left-radius: 50% 35%;
+                border-bottom-right-radius: 50% 35%;
+
+                &::before {
+                    border-bottom-left-radius: 50% 35%;
+                    border-bottom-right-radius: 50% 35%;
+                    @extend .cubie-shadow;
+                }
+            }
+        }
+        &.middle {
+            .left {
+                border-top-right-radius: 35% 50%;
+                border-bottom-right-radius: 35% 50%;
+                &::before {
+                    border-top-right-radius: 35% 50%;
+                    border-bottom-right-radius: 35% 50%;
+                    @extend .cubie-shadow;
+                }
+            }
+            .right {
+                border-top-left-radius: 35% 50%;
+                border-bottom-left-radius: 35% 50%;
+                &::before {
+                    border-top-left-radius: 35% 50%;
+                    border-bottom-left-radius: 35% 50%;
+                    @extend .cubie-shadow;
+                }
+            }
+        }
+        &.bottom {
+            .left {
+                border-top-right-radius: 10px;
+                &::before {
+                    border-top-right-radius: 10px;
+                    @extend .cubie-shadow;
+                }
+            }
+            .right {
+                border-top-left-radius: 10px;
+                &::before {
+                    border-top-left-radius: 10px;
+                    @extend .cubie-shadow;
+                }
+            }
+            .center {
+                border-top-left-radius: 50% 35%;
+                border-top-right-radius: 50% 35%;
+                &::before {
+                    border-top-left-radius: 50% 35%;
+                    border-top-right-radius: 50% 35%;
+                    @extend .cubie-shadow;
+                }
+            }
+        }
+    }
+    .pos-center.c-up {
+        background-color: white;
+        background-image: url(../img/logo-guoguan.png);
+        background-position: center center;
+        background-size: cover;
+    }
 }
 
 .rotate90 { transform: rotate(90deg);   }

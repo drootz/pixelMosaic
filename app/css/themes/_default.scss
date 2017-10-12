@@ -1,0 +1,51 @@
+.t-default {
+
+    &.brand-gan {
+        .c-front {  background-color: #1d8bc3;   }
+        .c-right {  background-color: #fe5143;   }
+        .c-back {   background-color: #23f664;   }
+        .c-left {   background-color: #ff6c11;   }
+        .c-bottom { background-color: #fefd49;   }
+    }
+
+    &.brand-rubik {
+        .c-front {  background-color: #0000FF;   }
+        .c-right {  background-color: #FF0000;   }
+        .c-back {   background-color: #008000;   }
+        .c-left {   background-color: #FFA500;   }
+        .c-bottom { background-color: #FFFF00;   }
+    }
+
+    &.brand-thevalk {
+        .c-front {  background-color: #1065bc;   }
+        .c-right {  background-color: #c51e19;   }
+        .c-back {   background-color: #25e968;   }
+        .c-left {   background-color: #ff4c12;   }
+        .c-bottom { background-color: #dbf630;   }
+    }
+
+    &.brand-weilonggts2 {
+        .c-front {  background-color: #0b78bb;   }
+        .c-right {  background-color: #bb1c0a;   }
+        .c-back {   background-color: #27f161;   }
+        .c-left {   background-color: #ff451c;   }
+        .c-bottom { background-color: #fbfd39;   }
+    }
+
+    &.brand-yuexiaopro {
+        .c-front {  background-color: #005193;   }
+        .c-right {  background-color: #9b2313;   }
+        .c-back {   background-color: #58e32b;   }
+        .c-left {   background-color: #ff6710;   }
+        .c-bottom { background-color: #fefc31;   }
+    }
+
+}
+
+.t-white {
+    .c-front {  background-color: #fff;   }
+    .c-right {  background-color: #fff;   }
+    .c-back {   background-color: #fff;   }
+    .c-left {   background-color: #fff;   }
+    .c-bottom { background-color: #fff;   }
+}

@@ -4,4 +4,10 @@ html {
 
 .container {
     padding: $cubeDefault-spacing;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+    align-content: flex-start;
 }
